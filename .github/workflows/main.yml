@@ -16,13 +16,14 @@ jobs:
 
     steps:
     # Check out repository under $GITHUB_WORKSPACE, so the job can access it
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v7
 
-    # Run using Python 3.8 for consistency and aiohttp
-    - name: Set up Python 3.8
-      uses: actions/setup-python@v4
+    # ubuntu-latest is Ubuntu 26.04, which has no Python 3.8 build.
+    # 3.12 is published for that image; aiohttp and requests support it.
+    - name: Set up Python 3.12
+      uses: actions/setup-python@v7
       with:
-        python-version: '3.8'
+        python-version: '3.12'
         architecture: 'x64'
         cache: 'pip'
 
